@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ES Module Testing</title>
+</head>
+<body>
+<script defer src="./lib/es-module-shims.js"></script>
+<script type="importmap-shim">
+{
+  "imports": {
+    "test": "./src/test.js",
+    "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.esm.browser.js"
+  },
+  "scopes": {
+    "/": {
+      "test-dep": "/test-dep.js"
+    }
+  }
+}
+</script>
+<script type="module-shim" src="main.js"></script>
+</body>
+</html>
