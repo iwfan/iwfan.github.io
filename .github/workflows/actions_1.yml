@@ -6,8 +6,6 @@ on:
       - master
     paths:
       - '**.*'
-    paths-ignore:
-      - 'docs/**'
 
 env:
   SERVER: production
