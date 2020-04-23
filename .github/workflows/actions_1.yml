@@ -26,7 +26,11 @@ jobs:
       output2: ${{ steps.step2.outputs.test }}
     steps:
     - id: step1
-      run: echo "::set-output name=test::hello"
+      run: echo "::set-output name=test::$(cat package.json \
+          | grep version \
+          | head -1 \
+          | awk -F: ‘{ print $2 }’ \
+          | sed 's/[",]//g')"
     - id: step2
       run: echo "::set-output name=test::world"
   job2:
