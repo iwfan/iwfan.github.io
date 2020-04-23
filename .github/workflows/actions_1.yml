@@ -26,11 +26,7 @@ jobs:
       output2: ${{ steps.step2.outputs.test }}
     steps:
     - id: step1
-      run: echo "::set-output name=test::$(cat package.json \
-          | grep version \
-          | head -1 \
-          | awk -F: ‘{ print $2 }’ \
-          | sed 's/[",]//g')"
+      run: echo "::set-output name=test::$(node -pe \"require('./package.json').version\")"
     - id: step2
       run: echo "::set-output name=test::world"
   job2:
