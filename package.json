@@ -1,0 +1,8 @@
+{
+  "name": "iwfan.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/iwfan/iwfan.github.io.git",
+  "author": "iwfan <i.wangfancn@gmail.com>",
+  "license": "MIT"
+}
