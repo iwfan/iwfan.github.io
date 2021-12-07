@@ -2,96 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-    <style>
-      main {
-        box-sizing: border-box;
-        margin: 50px;
-        height: calc(100vh - 100px);
-        border: 2px solid red;
-        overflow: auto;
-      }
-      img {
-        margin: 100px;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CDN Test</title>
   </head>
   <body>
-    #abc
-    <main>
-      <img
-        data-src="https://w.wallhaven.cc/full/x1/wallhaven-x1wroo.jpg"
-        class="lazy"
-        width="500"
-        height="500"
-      />
-      <img
-        data-src="https://w.wallhaven.cc/full/6k/wallhaven-6k3oox.jpg"
-        class="lazy"
-        width="500"
-        height="500"
-      />
-      <img
-        data-src="https://w.wallhaven.cc/full/ey/wallhaven-eymzjk.jpg"
-        class="lazy"
-        width="500"
-        height="500"
-      />
-      <img
-        data-src="https://w.wallhaven.cc/full/lm/wallhaven-lmxmxy.png"
-        class="lazy"
-        width="500"
-        height="500"
-      />
-      <img
-        data-src="https://w.wallhaven.cc/full/ym/wallhaven-ymojgd.jpg"
-        class="lazy"
-        width="500"
-        height="500"
-      />
-    </main>
+    <h1>CDN测试页面</h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.2/echarts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.24/vue.global.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/4.0.12/vue-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.7/index.js"></script>
   </body>
-  <script>
-    function lazyLoadImage() {
-      const onVisible = (entries, observer) => {
-        entries.forEach((entry) => {
-          const { target, isIntersecting } = entry;
-          if (isIntersecting) {
-            const isLoading = target.classList.contains("loading");
-
-            if (!isLoading) {
-              target.classList.add("loading");
-              const src = target.dataset.src;
-
-              const img = new Image();
-              img.onload = () => {
-                target.src = src;
-              };
-              img.src = src;
-            }
-          }
-        });
-      };
-
-      const observer = new IntersectionObserver(onVisible, {
-        root: document.querySelector("main"),
-        rootMargin: "0px 0px 100px 0px",
-        threshold: 0,
-      });
-
-      const imageList = document.querySelectorAll("img.lazy");
-      imageList.forEach((img) => {
-        observer.observe(img);
-      });
-    }
-
-    // if (!('loading' in HTMLImageElement.prototype)) {
-    lazyLoadImage();
-    // }
-  </script>
 </html>
